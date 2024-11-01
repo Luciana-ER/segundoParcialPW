@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setUser(null);
         setLoading(false); // Agrega setLoading aquí en caso de que no haya token
-        return;
+        return setUser(null);
       }
 
       try {
@@ -78,6 +78,7 @@ export const AuthProvider = ({ children }) => {
 
         setIsAuthenticated(true);
         setUser(res.data);
+        setLoading(false)
       } catch (error) {
         setIsAuthenticated(false);
         setUser(null);
